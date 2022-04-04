@@ -26,7 +26,6 @@ const buildBoard = (board) => {
     boardContainer.append(boardRow);
     for (let j = 0; j < board[i].length; j += 1) {
       const boardElement = document.createElement("div");
-
       boardElement.className = "square";
       boardElement.addEventListener("click", (event) => {
         handleClick(event, i, j);
@@ -35,6 +34,92 @@ const buildBoard = (board) => {
     }
   }
 };
+
+// //Gameplay Logic: r for Row, c for Column
+// const checkWinner = () => {
+//   for (let i = 0; i < board.length; i += 1) {
+//     let tempR = board[i][0];
+//     let sameValue = true;
+//     for (let j = 0; j < board[i].length; j += 1) {
+//       if (board[i][j] !== tempR) sameValue = false;
+//     }
+//     if (sameValue && tempR === "X") return 1;
+//     if (sameValue && tempR === "O") return 2;
+//   }
+//   for (let i = 0; i < board.length; i += 1) {
+//     let tempR = board[0][i];
+//     let sameValue = true;
+//     for (let j = 0; j < board[i].length; j += 1) {
+//       if (board[j][i] !== tempR) sameValue = false;
+//     }
+//     if (sameValue && tempR === "X") return 1;
+//     if (sameValue && tempR === "O") return 2;
+//   }
+
+//   let tempD = board[0][0];
+//   let sameValue = true;
+//   for (let i = 0; i < board.length; i += 1) {
+//     if (board[i][i] !== tempD) sameValue = false;
+//   }
+//   if (sameValue && tempD === "X") return 1;
+//   if (sameValue && tempD === "O") return 2;
+
+//   tempD = board[0][board.length - 1];
+//   sameValue = true;
+//   for (let i = 0; i < board.length; i += 1) {
+//     if (board[i][board.length - i - 1] !== tempD) sameValue = false;
+//   }
+//   if (sameValue && tempD === "X") return 1;
+//   if (sameValue && tempD === "O") return 2;
+
+//   // // check rows
+//   // for (let i = 0; i < board.length; i += 1) {
+//   //   tempR = board[i][0];
+//   //   console.log(`${[i]}0: ${tempR}`);
+//   //   for (let j = 1; j < board[i].length - 1; j += 1) {
+//   //     if (board[i][j] === tempR && board[i][j + 1] === tempR && tempR !== "")
+//   //       sameValue = true;
+//   //   }
+//   //   console.log(sameValue);
+//   //   if (sameValue && tempR === "X") return 1;
+//   //   if (sameValue && tempR === "O") return 2;
+//   // }
+
+//   // // check columns
+//   // for (let i = 0; i < board.length; i += 1) {
+//   //   tempC = board[0][i];
+//   //   for (let j = 1; j < board[i].length - 1; j += 1) {
+//   //     if (board[j][i] === tempC && board[j + 1][i] === tempC && tempC !== "")
+//   //       sameValue = true;
+//   //   }
+//   //   console.log(sameValue);
+//   //   if (sameValue && tempC === "X") return 1;
+//   //   if (sameValue && tempC === "O") return 2;
+//   // }
+
+//   // // check cross - right
+//   // for (let i = 1; i < board.length - 1; i += 1) {
+//   //   let temp = board[0][0];
+//   //   if (board[i][i] === temp && board[i + 1][i + 1] === temp && temp !== "")
+//   //     sameValue = true;
+//   //   if (sameValue && temp === "X") return 1;
+//   //   if (sameValue && temp === "O") return 2;
+//   // }
+
+//   // // check cross - left
+//   // for (let i = 0; i < board.length; i += 1) {
+//   //   let temp = board[board.length - 1][i];
+//   //   for (let j = board[i].length - 1; j > 0; j -= 1) {
+//   //     if (board[i][j] === temp && board[(i + 1)][(j - 1)] === temp && temp !== "")
+//   //       sameValue = true;
+//   //   }
+//   //   if (sameValue && temp === "X") return 1;
+//   //   if (sameValue && temp === "O") return 2;
+//   // }
+
+//   return 0;
+// };
+
 let there_is_a_winner = false;
 const handleClick = (event, i, j) => {
   if (there_is_a_winner) return;
@@ -45,7 +130,7 @@ const handleClick = (event, i, j) => {
     const winner = checkWinner();
     if (winner !== 0) {
       there_is_a_winner = true;
-      outputMsgDiv.innerText = `Player ${winner} win`;
+      return (outputMsgDiv.innerText = `Player ${winner} won.`);
     }
   }
 };
