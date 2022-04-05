@@ -5,16 +5,20 @@
 }
 
 body {
-  background-color: pink;
+  background-color: #525e75;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #f1ddbf;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  border: 5px solid #92ba92;
+  background-color: #78938a;
+  border-radius: 20px;
 }
 
 .row {
@@ -23,14 +27,15 @@ body {
 }
 
 .square {
+  color: #525e75;
   padding: 10px;
   margin: 10px;
-  background-color: lightblue;
+  background-color: #f1ddbf;
   height: 50px;
   width: 50px;
   vertical-align: top;
   border-radius: 15px;
-  border: 2px solid rgb(83, 83, 182);
+  border: 2px solid #525e75;
   text-align: center;
   display: flex;
   flex-direction: column;
