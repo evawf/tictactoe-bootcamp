@@ -56,6 +56,8 @@ const handleClick = (event, i, j) => {
     }
   }
   if (emptyGrid === 0) {
+    btn.className = "displayBtn";
+    btn.innerText = "Play again";
     return (outputMsgDiv.innerText = `It's a tie.`);
   }
 };
