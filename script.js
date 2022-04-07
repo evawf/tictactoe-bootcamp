@@ -10,16 +10,20 @@ const board = [
 let outputMsg = "Player1's turn.";
 let currentPlayer = "X";
 const outputMsgDiv = document.createElement("div");
+const btn = document.createElement("button");
+btn.id = "btn";
+btn.className = "hideBtn";
+document.body.appendChild(btn);
 
 //Helper Functions: build board and display player's choice
 const buildBoard = (board) => {
   const boardContainer = document.createElement("div");
   boardContainer.className = "container";
-
   outputMsgDiv.className = "outputMsg";
   outputMsgDiv.innerText = outputMsg;
 
   document.body.append(outputMsgDiv, boardContainer);
+
   for (let i = 0; i < board.length; i += 1) {
     const boardRow = document.createElement("div");
     boardRow.className = "row";
@@ -46,10 +50,14 @@ const handleClick = (event, i, j) => {
     const winner = checkWinner();
     if (winner !== 0) {
       there_is_a_winner = true;
+      btn.className = "displayBtn";
+      btn.innerText = "Play again";
       return (outputMsgDiv.innerText = `Player ${winner} won.`);
     }
   }
-  if (emptyGrid === 0) return (outputMsgDiv.innerText = `It's a tie.`);
+  if (emptyGrid === 0) {
+    return (outputMsgDiv.innerText = `It's a tie.`);
+  }
 };
 
 const printMsg = (player) => {
@@ -69,8 +77,22 @@ const squareClicked = (row, column) => {
   togglePlayer();
   return board[row][column];
 };
+
+// Reset Game
+btn.addEventListener("click", () => {
+  console.log("you clicked here!");
+  location.reload();
+});
+
 // Initialize game
 const initGame = () => {
+  //Global Variables: Board, Current Player, Board Element,
+  const board = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+  ];
+
   buildBoard(board);
 };
 

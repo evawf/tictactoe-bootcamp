@@ -48,3 +48,23 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.displayBtn {
+  display: block;
+}
+
+.hideBtn {
+  display: none;
+}
+
+#btn {
+  width: 85px;
+  height: 30px;
+  background-color: #f1ddbf;
+  border-radius: 15px;
+}
+
+#btn:hover {
+  background-color: green;
+  color: white;
+}
